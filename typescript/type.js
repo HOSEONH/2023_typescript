@@ -40,6 +40,48 @@ console.log(myPerson.name);
 function printName(person) {
     console.log(person.name);
     // if문을 사용해서 age값이 있다면 console.log로 출력
+    if (person.age !== undefined) {
+        console.log(person.age);
+    }
 }
 printName(person);
 // printName()을 사용해서 myPerson 출력
+printName(myPerson);
+// 화살표함수, 익명함수를 만들어서 변수에 할당해서 쓰는 내용
+// 화살표함수나 익명함수의 경우 함수의 이름이 없기때문에,
+// 매개변수뒤에 적어줌
+var loginUser = function (id, pw) {
+    console.log("로그인했습니다");
+    return true;
+};
+// 동일한 내용 인터페이스로 작성
+var loginUserInter;
+loginUserInter = function (id, pw) {
+    // 매개변수의 자료형을 기록했기에 적지않아도 괜찮다
+    console.log(id, "로그인했습니다");
+    // 미리 반환값을 기록했기에 반환값을 잘못적지않았는지 확인가능
+    return true;
+};
+var jhon = {
+    // Developer의 내용
+    skill: "typescript",
+    // Person의 내용
+    name: "jhon"
+};
+var green = {};
+green.name = "green";
+green.skill = "javascript";
+// green.text = "Developer에 없는 속성은 접근 불가"
+console.log(jhon, green);
+// let blue:Workers 선언 및 값 할당하기
+// 다른 Worker의 인터페이스가 있으므로, Workers로 바꿔서 작성
+var blue = {
+    name: "blue",
+    job: "frontend"
+};
+var numArray = [1, 2, 3, 4];
+// 객체의 배열을 만들때, 인터페이스를 사용해서 만들수 있다
+var objectArray = [
+    { name: "홍길동" }, { name: "성춘향" }
+];
+console.log(objectArray.map(function (o) { return o.name; }));
