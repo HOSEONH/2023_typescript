@@ -141,3 +141,79 @@ let objectArray: Person[] = [
     {name: "홍길동"},{name:"성춘향"}
 ]
 console.log(objectArray.map((o)=>o.name))
+
+// 타입스크립트에서 클래스
+// 자바스크립트에서 클래스
+// : 미리 속성과 메소드를 지정하여 객체를 만들수 있는 형태
+class MyClass {
+    // 속성의 값
+    name = "";
+    money = 0;
+    //constructor를 통해서 객체를 생성할때 속성의 값 지정
+    constructor (name:any) {
+        this.name = name;
+    }
+    // 함수형태로 메소드를 만들어서 사용
+    setMoney = (money:any) =>{
+        this.money = money;
+    }
+}
+
+// 타입스크립트로 작성하는 클래스
+// Accessor : 접근할수 없는 속성(private)에 get과 set을 이용하여 접근
+// get과 set은 .속성이름으로 접근할수 있고 이름은 겹치지 않게 작성
+class MyTypeClass {
+    // 속성
+    private name:string
+    money:number = 0
+
+    // set과 get을 통해 접근
+    get getname():string {
+        return this.name;
+    }
+    set setname(newValue:string) {
+        this.name = newValue;
+    }
+}
+const mytypeclass = new MyTypeClass();
+mytypeclass.money = 1000;
+mytypeclass.setname = "green"
+console.log(mytypeclass)
+
+// 추상 클래스 
+// 클래스 중에서도 메소드 값이 비어있는 클래스
+// abstract : 값이 비어있는 메소드 앞에 붙여준다.
+abstract class Developer2 {
+    // {}가 없는 메소드 - 실행할 내용을 적지않음
+    // 상속받을 클래스에서 내용을 적도록 안내
+    abstract coding():void;
+    
+    // 추상메소드가 아닌 일반메소드는 {}안에 실행값을 적어준다
+    drink(): void {
+        console.log('drink');
+    }
+}
+
+// 인터페이스나 추상클래스를 상속받을때,
+// 채워야할 메소드를 Quick Fix를 통해 채워서 쓸 수 있다
+class FrontEndDeveloper extends Developer2 {
+    coding(): void {
+        console.log("develop web")
+    }
+    design(): void {
+        console.log("design web")
+    }
+}
+const frontend = new FrontEndDeveloper();
+frontend.coding();
+frontend.design();
+frontend.drink();
+
+// 제네릭 
+// 타입(자료형)을 함수의 파라미터처럼 사용하는 것
+function getText<T>(text:T): T {
+    return text
+}
+console.log(getText<string>("Hi"));
+console.log(getText<number>(10));
+// boolean 값을 넣어서 console.log로 확인
